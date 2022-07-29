@@ -40,7 +40,7 @@ Este Componente nos va a servir para renderizar muchos Componentes `Cards`. Bás
 
 #### Barra de búsqueda (`components/SearchBar.js`)
 
-Este componente se va a utilizarse para luego poder encontrar las ciudades sobre las cuales se desee ver el clima actual.
+Este componente se va a utilizar para luego poder encontrar las ciudades sobre las cuales se desee ver el clima actual.
 
 ![](./img/SearchBar.png)
 

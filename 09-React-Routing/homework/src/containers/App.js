@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-
+import { Route } from 'react-router-dom';
 import './App.css';
 import Nav from '../components/Nav.jsx';
 import Cards from '../components/Cards.jsx';
+import Ciudad from '../components/Ciudad';
 
 const apiKey = 'Aqui va la API key que creaste';
 
@@ -36,6 +37,7 @@ function App() {
         }
       });
   }
+
   function onFilter(ciudadId) {
     let ciudad = cities.filter(c => c.id === parseInt(ciudadId));
     if(ciudad.length > 0) {
@@ -44,18 +46,32 @@ function App() {
         return null;
     }
   }
+  
   return (
     <div className="App">
-      <Nav onSearch={onSearch}/>
-      <div>
-        <Cards
-          cities={cities}
-          onClose={onClose}
+      <Route
+        path="/"
+        render={() => <Nav onSearch={onSearch} />}
+      />
+      <Route 
+        exact path="/about"
+        render={() => <About />}
+      />
+      <Route exact path="/">
+        <Cards cities={cities} onClose={onClose}/>
+      </Route>
+      <Route
+        exact
+        path='/ciudad/:ciudadId'
+        render={({match}) => <Ciudad city={onFilter (match.params.ciudadId)}/>}
         />
+      <div>
       </div>
       <hr />
     </div>
+    
   );
+  
 }
 
 export default App;

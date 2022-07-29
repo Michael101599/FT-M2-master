@@ -235,7 +235,7 @@ La respuesta a esa pregunta en la sección anterior es si, por supuesto! Herrami
 
 ## Punto de Arranque
 
-En primer lugar para que vean la apllicación funcionando pueden, luego de ejecutar el `npm install` hacer un `npm start` e ingresar a la URL que les indica por consola para ver el whiteboard funcionando. A partir de ahora la idea será hacer unn refactor de la aplicación para aplicar lo visto en la clase de módulos pero sin modificar la funcionalidad en sí de la aplicación.
+En primer lugar para que vean la apllicación funcionando pueden, luego de ejecutar el `npm install` hacer un `npm start` e ingresar a la URL que les indica por consola para ver el whiteboard funcionando. A partir de ahora la idea será hacer un refactor de la aplicación para aplicar lo visto en la clase de módulos pero sin modificar la funcionalidad en sí de la aplicación.
 
 ### Entendiendo Nuestras Dependencias
 
@@ -407,7 +407,7 @@ Comentá los `<script>` tags actuales en nuestro `index.html`. En su lugar, escr
 El momento ha llegado! Ve a través de los archivos Javascript y convertilos en modules! Si necesitas ayuda, aquí hay una checklist de cosas que podés hacer en cada archivo:
 
 - Remové las IIFE que rodean al código - ya no las vas a necesitar más. (Quiz: por qué?)
-- Identifica que cosas ese archivo expone al objeto `window` y y pon eso `module.exports`.
+- Identifica que cosas ese archivo expone al objeto `window` y pon eso `module.exports`.
 - Identificá cualquier cosa que ese archivo obtiene de otro archivo en el objeto window y cambialo a que sea requerido.
   + (nota: esto por supuesto no incluye cosas como `window.location.origin` o `window.addEventListner` - estamos manipulando el contexto global por gusto ahí)
 
