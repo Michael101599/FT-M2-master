@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { addMovieFavorite, getMovies } from "../../actions";
 import './Buscador.css';
-import { getMovies } from "../../actions";
 
 
 export class Buscador extends Component {
@@ -13,11 +12,14 @@ export class Buscador extends Component {
       title: ""
     };
   }
+
   handleChange(event) {
     this.setState({ title: event.target.value });
   }
+
   handleSubmit(event) {
     event.preventDefault();
+    this.props.getMovies(this.state.title)
   }
 
   render() {
@@ -42,11 +44,11 @@ export class Buscador extends Component {
          {
           this.props.movies && this.props.movies.map(movie => (
             <div key={movie.imdbID}>
-              <link to={`/movie/${movie.imdbID}`}>
+              <Link to={`/movie/${movie.imdbID}`}>
                 {movie.title}
-              </link>
+              </Link>
               <button onClick={() => this.props.addMovieFavorite ({
-                title: movie.title,
+                title: movie.Title,
                 id: movie.imdbID
               })}>FAV</button>
             </div>
@@ -58,7 +60,7 @@ export class Buscador extends Component {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps (state){
   return{
     movies: state.moviesLoaded
   };
@@ -66,9 +68,9 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return{
-    getMovies: title => dispatch(getMovies(title))
-  };
+    getMovies: title => dispatch(getMovies(title)),
+    addMovieFavorite: title => dispatch(addMovieFavorite(title))
+  }
 }
 
 export default connect (mapStateToProps, mapDispatchToProps)(Buscador);
-
