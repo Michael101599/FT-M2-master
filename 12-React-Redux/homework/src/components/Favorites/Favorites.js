@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { removeMovieFavorite } from "../../actions";
 // import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
 import './Favorites.css';
@@ -17,6 +18,16 @@ export class ConnectedList extends Component {
   }
 }
 
+function mapStateToProps(state){
+  return{
+    movies: state.moviesFavorites
+  };
+}
 
+function mapDispatchToProps(dispatch){
+  return{
+    removeMovieFavorite: movieID => dispatch(removeMovieFavorite(movieID)),
+  };
+}
 
-export default (ConnectedList);
+export default connect (mapStateToProps, mapDispatchToProps)(ConnectedList);
