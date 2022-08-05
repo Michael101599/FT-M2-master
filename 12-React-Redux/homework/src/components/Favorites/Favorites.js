@@ -12,7 +12,7 @@ export class ConnectedList extends Component {
         <h2>Películas Favoritas</h2>
         <ul>
           {
-            this.props.movies && this.props.map(movie => (
+            this.props.movies && this.props.movies.map(movie => (
               <div key={movie.id}>
                 <Link to={`/movie/${movie.id}`}>
                 <span>{movie.title}</span>
