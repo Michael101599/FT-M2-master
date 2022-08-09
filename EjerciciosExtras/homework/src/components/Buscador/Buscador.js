@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { getAllPosts } from "../../actions";
 
 import './Buscador.css';
 
@@ -15,7 +16,7 @@ export class Buscador extends Component {
     })
   }
   
-  viewAllPost(){
+  viewAllPost(){ //handleClick
     this.setState({
       filtrados: this.props.posts
     })
@@ -33,7 +34,7 @@ export class Buscador extends Component {
               type="text"
               id="title"
               autoComplete="off"
-              value={ postsSearch}
+              value={postsSearch}
             />
           </div>
           <button type="submit">BUSCAR</button>
@@ -50,4 +51,17 @@ export class Buscador extends Component {
     );
   }
 }
-export default Buscador;
+
+function mapStateToProps(state){
+  return{
+    posts: state.posts
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    getAllPosts: () => dispatch(getAllPosts())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Buscador);

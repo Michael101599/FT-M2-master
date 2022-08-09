@@ -10,7 +10,21 @@ export class Users extends Component {
     return (
       <div className="details">
         <h4 className="title">Usuarios del blog</h4>
-        {/* Aqui deberias poner tu lista de usuarios! */}
+        {
+          this.props.users && this.props.users.map(user => (
+            <tr>
+              <td>
+                <div key={user.id}>
+                  <td>
+                    <Link to={`/users/${user.id}/posts`} className='button'>
+                    Posts
+                    </Link>
+                  </td>
+                </div>
+              </td>
+            </tr>
+          ))
+        }
         <table>
           <thead>
             <tr className="header">
@@ -28,5 +42,17 @@ export class Users extends Component {
   }
 }
 
-export default Users
+function mapStateToProps(state){
+  return{
+    users: state.users
+  }
+}
+
+function mapSDispatchToProps(dispatch){
+  return{
+    getAllUsers: users => dispatch(getAllUsers(users))
+  }
+}
+
+export default connect(mapStateToProps, mapSDispatchToProps) (Users);
 
